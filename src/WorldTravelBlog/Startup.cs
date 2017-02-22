@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using WorldTravelBlog.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace WorldTravelBlog
 {
@@ -33,6 +34,9 @@ namespace WorldTravelBlog
             services.AddEntityFramework()
                 .AddDbContext<TravelBlogContext>(options =>
                     options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +51,7 @@ namespace WorldTravelBlog
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseIdentity();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

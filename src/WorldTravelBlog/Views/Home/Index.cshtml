@@ -5,5 +5,19 @@
 
 <h1>Welcome to a travel blog</h1>
 
+<h2>Submitting data with a POST request</h2>
+<form action="Register" class="register">
+    <label for="Email">Email: </label>
+    <input type="text" name="Email" />
+    <label for="Password">Password: </label>
+    <input type="text" name="Password" />
+    <label for="ConfirmPassword">Confirm Password: </label>
+    <input type="text" name="ConfirmPassword" />
+
+    <button type="submit">Submit</button>
+</form>
+<div id="result6"></div>
+
+
 @Html.ActionLink("View all locations", "Index", "Locations")
 @Html.ActionLink("View all people", "People", "Experiences")
